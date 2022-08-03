@@ -1,20 +1,25 @@
-import org.junit.Assert;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+package stepDefinations;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class E2E
+public class steps
 {
-    public static void main(String[] args) throws InterruptedException, AWTException {
-//test1
+    WebDriver driver;
+    @Given("^User is on HomePage$")
+    public void user_is_on_HomePage() throws Throwable {
         System.setProperty("webdriver.chrome.driver","Drivers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.amazon.com/");
@@ -22,6 +27,10 @@ public class E2E
         System.out.println(title);
         Assert.assertEquals(title,"Amazon.com. Spend less. Smile more.");
 
+    }
+
+    @When("^User Enters a required product in main search$")
+    public void user_Enters_a_required_product_in_main_search() throws Throwable {
         WebElement ele = driver.findElement(By.xpath("//span[@class='a-button a-spacing-top-base a-button-base glow-toaster-button glow-toaster-button-dismiss']"));
 
         if (ele.isDisplayed())
@@ -30,22 +39,26 @@ public class E2E
         }
         driver.findElement(By.id("nav-search-bar-form")).click();
         Thread.sleep(1000);
-       // JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        // JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 //set the text
-       // jsExecutor.executeScript("document.getElementById('twotabsearchtextbox').value='testuser'");
+        // jsExecutor.executeScript("document.getElementById('twotabsearchtextbox').value='testuser'");
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Oneplus");
         Thread.sleep(3000);
         List<WebElement> eles = driver.findElements(By.xpath("//div[@class='s-suggestion-container']//div"));
         for (WebElement elem : eles)
         {
-           if (elem.getText().equals("oneplus"))
-           {
-               Thread.sleep(3000);
-               elem.click();
-               break;
-           }
+            if (elem.getText().equals("oneplus"))
+            {
+                Thread.sleep(3000);
+                elem.click();
+                break;
+            }
         }
 
+    }
+
+    @Then("^user selects a product and click on AddToCart$")
+    public void user_selects_a_product_and_click_on_AddToCart() throws Throwable {
         List<WebElement> mobiles = driver.findElements(By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']"));
         for (WebElement mobile : mobiles)
         {
@@ -54,7 +67,7 @@ public class E2E
             {
 
                 //String clicklnk = Keys.chord(Keys.CONTROL,Keys.ENTER);
-               // mobile.sendKeys(clicklnk);
+                // mobile.sendKeys(clicklnk);
                 mobile.click();
                 break;
             }
@@ -65,7 +78,10 @@ public class E2E
         //wait.until(ExpectedConditions.visibilityOf(addToCart));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", addToCart);
+    }
 
+    @Then("^Verify Product is added to the cart$")
+    public void verify_Product_is_added_to_the_cart() throws Throwable {
         driver.findElement(By.xpath("//div[@id='nav-cart-count-container']")).click();
         Thread.sleep(3000);
         WebElement mble = driver.findElement(By.xpath("//div[@id='nav-cart-count-container']"));
@@ -73,5 +89,6 @@ public class E2E
 
 
         driver.quit();
+
     }
 }
