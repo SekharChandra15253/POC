@@ -14,7 +14,7 @@ public class AddToCart
 
     WebDriver driver;
 
-    @FindBy(xpath = "//div[@class='s-suggestion-container']//div" )
+    @FindBy(xpath = "//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-2']//span" )
     private List<WebElement> mobiles;
 
     @FindBy(xpath = "//input[@id='add-to-cart-button']" )
@@ -22,6 +22,9 @@ public class AddToCart
 
     @FindBy(xpath = "//div[@id='nav-cart-count-container']" )
     private WebElement VerifyaddToCart;
+
+    @FindBy(xpath = "//span[@class='a-truncate-cut']")
+    private WebElement ProductText;
 
     public AddToCart(WebDriver driver)
     {
@@ -33,9 +36,6 @@ public class AddToCart
         for (WebElement mobile : mobiles) {
             System.out.println(mobile.getText());
             if (mobile.getText().equals("OnePlus Nord N20 5G |Android Smart Phone |6.43\" AMOLED Display|6+128GB |U.S. Unlocked |4500 mAh Battery | 33W Fast Charging | Blue Smoke")) {
-
-                //String clicklnk = Keys.chord(Keys.CONTROL,Keys.ENTER);
-                // mobile.sendKeys(clicklnk);
                 mobile.click();
                 break;
             }
@@ -51,8 +51,9 @@ public class AddToCart
     public void verifyAddToCart()
     {
         VerifyaddToCart.click();
-        String txt = VerifyaddToCart.getText();
-        Assert.assertEquals("OnePlus Nord N20 5G |Android Smart Phone |6.43\" AMOLED Display|6+1…",txt);
+        String txt = ProductText.getText();
+        //Assert.assertEquals("OnePlus Nord N20 5G |Android Smart Phone |6.43\" AMOLED Display|6+1…",txt);
+        Assert.assertSame("OnePlus Nord N20 5G |Android Smart Phone |6.43\" AMOLED Display|6+1…",txt);
 
     }
 

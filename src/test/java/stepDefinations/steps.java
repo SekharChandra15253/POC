@@ -48,6 +48,7 @@ public class steps
         hp.clickSearchBar();
         Thread.sleep(1000);
         hp.EnterTextSearchBox();
+        Thread.sleep(1000);
         hp.selectProduct();
 
     }
@@ -55,6 +56,7 @@ public class steps
     @Then("^user selects a product and click on AddToCart$")
     public void user_selects_a_product_and_click_on_AddToCart() throws Throwable {
         ac = pageObjectManager.getAddToCartPage();
+        Thread.sleep(5000);
         ac.selectMobile();
         Thread.sleep(10000);
         ac.clickAddToCart();
@@ -62,6 +64,7 @@ public class steps
 
     @Then("^Verify Product is added to the cart$")
     public void verify_Product_is_added_to_the_cart() throws Throwable {
+        Thread.sleep(5000);
         ac.verifyAddToCart();
         driver.quit();
 

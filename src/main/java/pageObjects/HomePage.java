@@ -14,10 +14,10 @@ public class HomePage
     @FindBy(xpath = "//span[@class='a-button a-spacing-top-base a-button-base glow-toaster-button glow-toaster-button-dismiss']" )
     private WebElement ele;
 
-    @FindBy(xpath = "nav-search-bar-form" )
+    @FindBy(id = "nav-search-bar-form" )
     private WebElement searchBar;
 
-    @FindBy(xpath = "twotabsearchtextbox" )
+    @FindBy(id = "twotabsearchtextbox" )
     private WebElement searchBarTextBox;
 
     @FindBy(xpath = "//div[@class='s-suggestion-container']//div" )
@@ -50,12 +50,12 @@ public class HomePage
     }
 
     public void selectProduct() throws InterruptedException {
-        for (WebElement elem : products)
+        for (WebElement prod : products)
         {
-            if (elem.getText().equals("oneplus"))
+            if (prod.getText().equals("oneplus"))
             {
                 Thread.sleep(3000);
-                elem.click();
+                prod.click();
                 break;
             }
         }

@@ -47,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Aug 4, 2022 09:03:23 AM</span>
+                    <span class='label suite-start-time blue darken-3'>Aug 4, 2022 08:09:42 PM</span>
 				</a>
 			</li>
 			<li>
@@ -74,7 +74,6 @@
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
 						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
-						<li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -155,10 +154,10 @@
 					<canvas id='grandchild-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='25%'><span class='strong'>1</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='75%'><span class='strong'>3</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='50%'>2</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -175,12 +174,12 @@
 				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Automate Product Booking from Amazon</span>
-						<span class='test-time'>Aug 4, 2022 09:03:23 AM</span>
+						<span class='test-time'>Aug 4, 2022 08:09:42 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='scenario node' test-id='2' status='fail'>
-	<span class='duration right label'>0h 0m 6s+368ms</span>
+	<span class='duration right label'>0h 0m 57s+281ms</span>
 	<div class='desc'>
 		<b>Scenario</b>
 		<span class="desc-text">Add a product into cart</span>
@@ -194,31 +193,36 @@
 				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='4' class='node when fail' status='fail'>
+		<li test-id='4' class='node when pass' status='pass'>
 			
 			<b>When</b>
 			
 			<span class="bdd-step-name">When User Enters a required product in main search</span>
-				<div class='pre'><pre>java.lang.NullPointerException: Cannot invoke "pageObjects.HomePage.messageDismiss()" because "this.hp" is null
-	at stepDefinations.steps.user_Enters_a_required_product_in_main_search(steps.java:51)
-	at ✽.When User Enters a required product in main search(addToCart.feature:6)
-</pre></div>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='5' class='node then skip' status='skip'>
+		<li test-id='5' class='node then pass' status='pass'>
 			
 			<b>Then</b>
 			
 			<span class="bdd-step-name">Then user selects a product and click on AddToCart</span>
-				<div class='pre'>skipped</div>
+				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='6' class='node and skip' status='skip'>
+		<li test-id='6' class='node and fail' status='fail'>
 			
 			<b>And</b>
 			
 			<span class="bdd-step-name">And Verify Product is added to the cart</span>
-				<div class='pre'>skipped</div>
+				<div class='pre'><textarea>java.lang.AssertionError: expected same:<OnePlus Nord N20 5G |Android Smart Phone |6.43" AMOLED Display|6+1…> was not:<OnePlus Nord N20 5G |Android Smart Phone |6.43" AMOLED Display|6+128GB |U.S. Unlocked |4500 mAh Battery | 33W Fas…>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotSame(Assert.java:829)
+	at org.junit.Assert.assertSame(Assert.java:772)
+	at org.junit.Assert.assertSame(Assert.java:783)
+	at pageObjects.AddToCart.verifyAddToCart(AddToCart.java:56)
+	at stepDefinations.steps.verify_Product_is_added_to_the_cart(steps.java:68)
+	at ✽.And Verify Product is added to the cart(addToCart.feature:8)
+</textarea></div>
 			
 		</li>
 	</ul>
@@ -278,7 +282,7 @@
 
                         <li class='exception displayed active'>
                             <div class='exception-heading'>
-                                <span class='exception-name'>java.lang.NullPointerException</span>
+                                <span class='exception-name'>java.lang.AssertionError</span>
                                 <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
                             </div>
                             <div class='exception-content hide'>
@@ -293,12 +297,17 @@
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>Aug 4, 2022 09:03:29 AM</td>
-                                                        <td class='linked' test-id='4'>Automate Product Booking from Amazon.Add a product into cart.When User Enters a required product in main search</td>
-                                                        <td><pre><pre>java.lang.NullPointerException: Cannot invoke "pageObjects.HomePage.messageDismiss()" because "this.hp" is null
-	at stepDefinations.steps.user_Enters_a_required_product_in_main_search(steps.java:51)
-	at ✽.When User Enters a required product in main search(addToCart.feature:6)
-</pre></pre></td>
+                                                        <td>Aug 4, 2022 08:10:31 PM</td>
+                                                        <td class='linked' test-id='6'>Automate Product Booking from Amazon.Add a product into cart.And Verify Product is added to the cart</td>
+                                                        <td><pre><textarea>java.lang.AssertionError: expected same:<OnePlus Nord N20 5G |Android Smart Phone |6.43" AMOLED Display|6+1…> was not:<OnePlus Nord N20 5G |Android Smart Phone |6.43" AMOLED Display|6+128GB |U.S. Unlocked |4500 mAh Battery | 33W Fas…>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotSame(Assert.java:829)
+	at org.junit.Assert.assertSame(Assert.java:772)
+	at org.junit.Assert.assertSame(Assert.java:783)
+	at pageObjects.AddToCart.verifyAddToCart(AddToCart.java:56)
+	at stepDefinations.steps.verify_Product_is_added_to_the_cart(steps.java:68)
+	at ✽.And Verify Product is added to the cart(addToCart.feature:8)
+</textarea></pre></td>
                                                     </tr>
                                         </tbody>
                                     </table>
@@ -342,19 +351,19 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Aug 4, 2022 09:03:23 AM</div>
+					<div class='panel-lead'>Aug 4, 2022 08:09:42 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Aug 4, 2022 09:03:29 AM</div>
+			 		<div class='panel-lead'>Aug 4, 2022 08:10:39 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>6,588ms</div>
+					<div class='panel-lead'>57,593ms</div>
 				</div>
 			</div>
 		</div>
@@ -384,14 +393,14 @@
 				infoChild: 0,
 				exceptionsChild: 1,
 				
-				passGrandChild: 1,
+				passGrandChild: 3,
 				failGrandChild: 1,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 2,
+				skipGrandChild: 0,
 				infoGrandChild: 0,
-				exceptionsGrandChild: 3,
+				exceptionsGrandChild: 1,
 			};
 		</script>
 		
